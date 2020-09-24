@@ -14,7 +14,7 @@
             <button type="submit">입력</button>            
         </form>
         <div id="result">{{result}}</div>
-        <div id="before">{{before}}</div>
+        <div id="before" v-html="before"></div>
     </div>    
 </body>
 <script>
@@ -35,6 +35,7 @@
                 if(this.first * this.second === parseInt(this.value)){
                     this.result = '정답!!';        
                     this.before += '정답기록'+this.cnt+' : '+this.first+'*'+this.second+'='+this.value+'\n';                    
+                    this.before = this.before.replace(/(\n|\r\n)/g, '<br>');
                     this.first = Math.ceil(Math.random()*9);
                     this.second = Math.ceil(Math.random()*9);
                     this.value = '';     
@@ -44,8 +45,7 @@
                     this.result = '땡';
                     this.value = ''; 
                     this.$refs.answer.focus();
-                }
-                this.before.replaceAll("\n", "<br>");
+                }                               
             },
         },
     });
