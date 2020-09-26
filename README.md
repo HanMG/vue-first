@@ -40,4 +40,25 @@ Vue의 methods부분에
 this.$ref.answer.focus();
 ``
 
+# 작명 Case
+ex) wordrelay
+WordRelay => PascalCase
+wordRelay => camelCase
+word-relay = > kebab-case
+
+# 반복되는 작업엔 Component
+Vue.component('word-relay',{
+  template:``,
+  data() {return data값},
+  methods: {},
+}
+
+컴포넌트는 인스턴스보다는 위에 위치
+스크립트는 div#root보다는 아래에 위치
+
+
+vue사용시 html단에는 케밥케이스 사용해야하함
+스크립트단에서는 다른 케이스 가능 
+
+
 
