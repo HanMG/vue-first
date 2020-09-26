@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="root">
-        <word-relay></word-relay>
-        <word-relay></word-relay>
-        <word-relay></word-relay>
+        <word-relay start-word="한문구"></word-relay>
+        <word-relay start-word="이상해"></word-relay>
+        <word-relay start-word="구글"></word-relay>
     </div>
 </body>
 <script>
@@ -25,9 +25,10 @@
                 <div id="result">{{result}}</div>
             </div>
         `,
+        props: ['startWord'],
         data() {
             return{
-                word: '한문구',
+                word: this.startWord,
                 result: '',
                 value: '',
             };
