@@ -1,4 +1,4 @@
-#vue 공부
+#vue2.0 공부 3.0은 일단 가이드만 보면서...
 
 # vue cdn
 ``<script src="https://cdn.jsdelivr.net/npm/vue"></script>``
