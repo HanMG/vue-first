@@ -60,5 +60,16 @@ Vue.component('word-relay',{
 vue사용시 html단에는 케밥케이스 사용해야하함
 스크립트단에서는 다른 케이스 가능 
 
+# npm 을 이용한 설치
+npm i vue
+
+# webpack 
+npm i webpack webpack-cli -D
+여기서 -D 는 개발시에만 쓰겠다는 뜻이라함 === --save-dev
+스크립트의 정리를(?) 위해서 사용한다함
+
+# webpack 설정
+기본 구조로 entry, module, plugins, output 등이 들어감
+
 
 
