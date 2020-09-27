@@ -69,7 +69,30 @@ npm i webpack webpack-cli -D
 스크립트의 정리를(?) 위해서 사용한다함
 
 # webpack 설정
-기본 구조로 entry, module, plugins, output 등이 들어감
+기본적으로 entry, module, plugins, output 등이 들어감
+entry에서 시작, 모르는 것을 만나면 module에 rules가 대신 처리, 그 후 처리를 할게 있으면 plugins, output에 결과
 
+기본적으로 js만 처리해서
+.vue 확장자를 가진 파일을 처리하기 위해 module의 rules에 확장자와 loader를 추가해야함
+npm i vue-loader -D
 
+webpack에서는 node환경이기에 require로 불러오고
+main.js에서는 vue환경이기에 import로 불러옴...
 
+npm i vue-template-compiler -D
+
+특정 버전을 깔기 위해선 npm i vue@2.7.0 이런식으로 설치하면됨
+
+추가적으로 mode, devtool, resolve 같은 게 있음
+mode : 개발시에는 'development', 배포시에는 'production'
+devtool: 개발시에는 'eval', 배포시에는 'hidden-source-map'  eval하면 빌드속도가 빠르다함
+resolve: 확장자처리를 한다함 
+
+# v-for
+반복처리,
+v-bind:key가 있어야 에러가 안뜸
+
+# @submit.prevent
+
+`v-on:submit="onSubmitForm" 과 해당 메소드에 넣어줘야하는  e.preventDefault(); `
+를 간단하게 표현할수있게해줌
