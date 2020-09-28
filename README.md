@@ -73,7 +73,7 @@ npm i webpack webpack-cli -D
 entry에서 시작, 모르는 것을 만나면 module에 rules가 대신 처리, 그 후 처리를 할게 있으면 plugins, output에 결과
 
 기본적으로 js만 처리해서
-.vue 확장자를 가진 파일을 처리하기 위해 module의 rules에 확장자와 loader를 추가해야함
+자바스크립트가 아닌 다른 확장자를 가진 파일을 처리하기 위해 module의 rules에 확장자와 loader를 추가해야함
 npm i vue-loader -D
 
 webpack에서는 node환경이기에 require로 불러오고
@@ -96,3 +96,27 @@ v-bind:key가 있어야 에러가 안뜸
 
 `v-on:submit="onSubmitForm" 과 해당 메소드에 넣어줘야하는  e.preventDefault(); `
 를 간단하게 표현할수있게해줌
+
+# v-bind: 줄이기
+예를 들어 v-bind:class="data" => :class="data" 이래도 같음
+
+# vue에서 style사용시
+npm i vue-style-loader -D
+npm i css-loader -D
+
+webpack module의 rules에 test: /\.css$/,  및 use로 vue-style-loader와 css-loader를 추가해줘야함
+
+sass less 같은 것을 추가할때도 loader는 계속 추가해줘야한다함
+
+style태그에 scoped 속성을 먹이면 해당 vue파일에서만 적용되고 다른 vue파일에서 
+같은 아이디나 클래스가 존재하더라도 적용 안된다고함.
+
+# 자동새로고침 및 변경적용 
+webpack --watch의 업그레이드?
+
+npm i -D webpack-dev-server
+
+webpack output설정에 publicPath를 추가해야함
+
+localhost:8080/파일명.html로 확인가능
+
