@@ -120,3 +120,18 @@ webpack output설정에 publicPath를 추가해야함
 
 localhost:8080/파일명.html로 확인가능
 
+# computed
+1. 템플릿 내에서 너무 많은 연산을 하면 코드가 비대해지고 유지보수가 어려운데
+이를 해결하기위해 사용. 성능최적화관련, 계산부분은 computed로 하는게 나음.
+2. computed 속성은 종속대상에 따라 캐싱되므로 종속된 대상이 변경될 때만 함수를 실행해서 원하지않은 실행을 막을 수 있음. 원하지않는 경우 그냥 메소드 사용하면됨
+
+https://kr.vuejs.org/v2/guide/computed.html
+
+# v-show
+v-show와 v-if
+둘 다 조건이 true일 경우 보여짐
+v-show는 태그와 형태가 존재, display: none일 뿐임
+v-if는 태그자체가 존재하지않고 `<!--->` 같은 주석처리가 되어있음
+보통 v-if를 많이 쓰는듯함.
+
+
