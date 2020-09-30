@@ -111,7 +111,7 @@ sass less 같은 것을 추가할때도 loader는 계속 추가해줘야한다�
 style태그에 scoped 속성을 먹이면 해당 vue파일에서만 적용되고 다른 vue파일에서 
 같은 아이디나 클래스가 존재하더라도 적용 안된다고함.
 
-# 자동새로고침 및 변경적용 
+# 자동새로고침 및 변경적용 (webpack-dev-server)
 webpack --watch의 업그레이드?
 
 npm i -D webpack-dev-server
@@ -119,6 +119,9 @@ npm i -D webpack-dev-server
 webpack output설정에 publicPath를 추가해야함
 
 localhost:8080/파일명.html로 확인가능
+
+실제 파일을 생성하지않고 메모리에 생성하여 사용 (좀 더 알아봐야할듯..)
+
 
 # computed
 1. 템플릿 내에서 너무 많은 연산을 하면 코드가 비대해지고 유지보수가 어려운데
@@ -134,4 +137,15 @@ v-show는 태그와 형태가 존재, display: none일 뿐임
 v-if는 태그자체가 존재하지않고 `<!--->` 같은 주석처리가 되어있음
 보통 v-if를 많이 쓰는듯함.
 
+# vue devtools - 크롬 확장프로그램
+vue 관련한 정보 및 디버깅 
+배포 환경에서는 vue-devtools를 못보게 해야 보안에 좋음.
+Vue.config.devtools = false;
 
+# vue lifeCycle 
+created -> mounted -> updated -> destroyed (before제외시)
+
+created = 컴포넌트가 보여지긴하지만 화면에 나타나기전 (준비)
+mounted = 컴포넌트가 보여지고 화면에 나타난후
+updated = 화면이 바뀌어서 다시 그려질때
+destroyed = 화면에 있다가 사라질때
