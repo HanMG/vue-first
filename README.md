@@ -46,6 +46,8 @@ WordRelay => PascalCase
 wordRelay => camelCase
 word-relay = > kebab-case
 
+vue에선 PascalCase를 kebab-case로 자동으로 바뀌어 인식
+
 # 반복되는 작업엔 Component
 Vue.component('word-relay',{
   template:``,
@@ -149,3 +151,17 @@ created = 컴포넌트가 보여지긴하지만 화면에 나타나기전 (준�
 mounted = 컴포넌트가 보여지고 화면에 나타난후
 updated = 화면이 바뀌어서 다시 그려질때
 destroyed = 화면에 있다가 사라질때
+
+# vue 스타일가이드
+컴포넌트명은 두단어 이상의 합성 이어야한다, for와 if를 같이 쓰면 안된다, for에는 key를 바인딩 해야된다. 등등의 가이드
+우선순위 A,B는 지킬수있도록
+https://kr.vuejs.org/v2/style-guide/index.html
+
+# props
+부모컴포넌트에서 자식컴포넌트로 값을 전달할때 쓰임,
+받은 데이터를 가지고 가공은 가능하지만 부모데이터는 변경이 안되있으므로 그렇게 사용 X,
+올바른 방법은 데이터를 바꾸는 부모의 메서드를 자식에게 props로 전달하면 된다함.
+
+# 다른 컴포넌트 불러오기
+script태그에 import로 불러오고
+export default 부분에 component에 등록해야함
