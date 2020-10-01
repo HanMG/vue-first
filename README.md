@@ -165,3 +165,8 @@ https://kr.vuejs.org/v2/style-guide/index.html
 # 다른 컴포넌트 불러오기
 script태그에 import로 불러오고
 export default 부분에 component에 등록해야함
+
+# watch
+Data 변수의 값이 바뀔때 비동기로 동작
+ex) data(value, oldValue){} value = 현재 값, oldValue = 이전 값
+순서가 꼬이기 쉬우니 최대한 쓰지 않도록 하는게 나음
