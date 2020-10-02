@@ -170,3 +170,22 @@ export default 부분에 component에 등록해야함
 Data 변수의 값이 바뀔때 비동기로 동작
 ex) data(value, oldValue){} value = 현재 값, oldValue = 이전 값
 순서가 꼬이기 쉬우니 최대한 쓰지 않도록 하는게 나음
+
+# $root, $parent
+this.$root.$data를 통해 최상위 부모 컴포넌트의 데이터에 접근 할 수 있고,
+this.$parent.$data를 통해 부모 컴포넌트의 데이터에 접근 할 수 있다.
+
+# index를 사용한 값의 변경 (this.$set)
+배열이나 객체의 경우 인덱스(ex: tableData[0][1] = 'X';)를 사용해 변경하는 방법으론 
+값은 변하나 화면에 변화가 적용 안됨
+
+해결방법1.
+import Vue from 'vue'; 를 하고
+Vue.set(this.tableData[1],0,'X')을 사용해 변경가능
+
+해결방법2.
+this.$set(this.tableData[1],0,'X)로 변경 가능 // Vue.set과 동일
+
+# Vuex
+컴포넌트가 늘어날수록 $root나 $parent를 사용시에 상위컴포넌트가 무엇인지 구분하기가 쉽지 않음
+그래서 나온게 vuex라고함. 리엑트 redux같은듯??
