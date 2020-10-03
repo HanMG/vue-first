@@ -189,3 +189,7 @@ this.$set(this.tableData[1],0,'X)로 변경 가능 // Vue.set과 동일
 # Vuex
 컴포넌트가 늘어날수록 $root나 $parent를 사용시에 상위컴포넌트가 무엇인지 구분하기가 쉽지 않음
 그래서 나온게 vuex라고함. 리엑트 redux같은듯??
+
+# EventBuS
+이벤트의 중앙 매개체.. 이벤트를 한 곳에서 관리
+빈깡통 Vue() 만들고 $on과 $emit을 사용
