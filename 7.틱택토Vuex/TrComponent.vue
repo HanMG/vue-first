@@ -11,8 +11,7 @@ export default {
     components: {
         TdComponent,
     },
-    props:{
-        rowData: Array,
+    props:{      
         rowIndex: Number,
     },
     data(){

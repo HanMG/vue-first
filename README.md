@@ -126,6 +126,7 @@ localhost:8080/파일명.html로 확인가능
 
 
 # computed
+data에 추가적인 계산이나 작업을 할때 사용
 1. 템플릿 내에서 너무 많은 연산을 하면 코드가 비대해지고 유지보수가 어려운데
 이를 해결하기위해 사용. 성능최적화관련, 계산부분은 computed로 하는게 나음.
 2. computed 속성은 종속대상에 따라 캐싱되므로 종속된 대상이 변경될 때만 함수를 실행해서 원하지않은 실행을 막을 수 있음. 원하지않는 경우 그냥 메소드 사용하면됨
@@ -217,13 +218,14 @@ export default new Vuex.Store({
     }
 });
 ````
+@주의할 점 
 
 mutations의 명은 대문자로 쓰는게 약속이라함.
 
 vuex에서도 배열이나 객체의 경우 인덱스(ex: tableData[0][1] = 'X';)를 사용해 변경하는 방법으론 
 값은 변하나 화면에 변화가 적용 안되서 vue의 set을 사용해야함
 
-Vue.use(Vuex)를 하여 vue와 vuex를 연결하고, 최상위 컴포넌트에도 import 해줘야함.
+Vue.use(Vuex)를 하여 vue와 vuex를 연결하고(this.$store 생성), 최상위 컴포넌트에도 import 해줘야함.
 
 # mapState
 import { mapState } from 'vuex';

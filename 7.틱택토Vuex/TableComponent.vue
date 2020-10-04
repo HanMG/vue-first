@@ -14,7 +14,7 @@ export default {
   computed:{
       tableData(){
           return this.$store.state.tableData;
-      },
+      },            
   },  
 }
 </script>
