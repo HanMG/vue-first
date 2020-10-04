@@ -186,10 +186,55 @@ Vue.set(this.tableData[1],0,'X')을 사용해 변경가능
 해결방법2.
 this.$set(this.tableData[1],0,'X)로 변경 가능 // Vue.set과 동일
 
+# EventBuS
+이벤트의 중앙 매개체.. 이벤트를 한 곳에서 관리
+빈깡통 Vue() 만들고 $on과 $emit을 사용
+
 # Vuex
 컴포넌트가 늘어날수록 $root나 $parent를 사용시에 상위컴포넌트가 무엇인지 구분하기가 쉽지 않음
 그래서 나온게 vuex라고함. 리엑트 redux같은듯??
 
-# EventBuS
-이벤트의 중앙 매개체.. 이벤트를 한 곳에서 관리
-빈깡통 Vue() 만들고 $on과 $emit을 사용
+store란걸 두고 사용. React의 redux는 하나만 사용하는데 vuex는 여러개 사용 가능하다고한다.
+
+````
+store.js
+export default new Vuex.Store({
+    // vue의 data와 비슷
+    state: {
+        
+    },
+    // vue의 computed와 비슷
+    getters: {
+
+    },
+    // state를 수정할 때 사용. 동기적으로
+    mutations:{
+
+    },    
+    // 비동기를 사용할 때, 또는 여러 뮤테이션을 연달아 실행 할 때
+    actions: {
+
+    }
+});
+````
+
+mutations의 명은 대문자로 쓰는게 약속이라함.
+
+vuex에서도 배열이나 객체의 경우 인덱스(ex: tableData[0][1] = 'X';)를 사용해 변경하는 방법으론 
+값은 변하나 화면에 변화가 적용 안되서 vue의 set을 사용해야함
+
+Vue.use(Vuex)를 하여 vue와 vuex를 연결하고, 최상위 컴포넌트에도 import 해줘야함.
+
+# mapState
+import { mapState } from 'vuex';
+store에서 state꺼낼때 더 편하게 해주기위해 사용
+
+기본형처럼 단순하게 사용하거나 
+...mapState(['state1','state2'])
+
+함수형식으로 사용하여 this를 사용하여 계산도 가능
+...mapState({
+  state1(state){
+    return state.winner + this.data;
+  }
+})
