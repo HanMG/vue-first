@@ -240,3 +240,7 @@ store에서 state꺼낼때 더 편하게 해주기위해 사용
     return state.winner + this.data;
   }
 })
+
+# slot
+react에서의 children과 같다함. 제어의 역전(IOC: inversion of control). 
+자식컴포넌트에서 화면에 표시되어야할 내용을 부모컴포넌트에 적어줌으로 부모컴포넌트의 Data나 methods에 접근할 수 있게해줌

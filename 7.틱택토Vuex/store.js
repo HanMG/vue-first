@@ -28,9 +28,9 @@ export default new Vuex.Store({
     },
     // vue의 computed와 비슷
     getters: {
-        turnMessage(state){
-            return this.turn + '님이 승리하셨습니다.';
-        }
+        // turnMessage(state){
+        //     return this.turn + '님이 승리하셨습니다.';
+        // }
     },
     // state를 수정할 때 사용. 동기적으로
     mutations:{

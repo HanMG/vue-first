@@ -1,11 +1,11 @@
 <template>
     <div>
         <div>{{turn}}님의 턴 입니다.</div>
-        <table> 
+        <table-component> 
             <tr v-for="(rowData, rowIndex) in tableData" :key="rowIndex.id">
                 <td @click="onClickTd(rowIndex, cellIndex)" v-for="(cellData, cellIndex) in rowData" :key="cellIndex.id">{{cellData}}</td>
-            </tr>       
-        </table>
+            </tr>           
+        </table-component>
         <div v-if="winner">{{winner}}님의 승리!</div>
     </div>    
 </template>
@@ -17,6 +17,9 @@ import TableComponent from './TableComponent';
 
 export default {    
     store,    
+    components:{
+        TableComponent,
+    },
     computed:{
         ...mapState(['winner','turn','tableData']),
         // winner(){
