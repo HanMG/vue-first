@@ -24,7 +24,7 @@ import { START_GAME } from './store';
             onChangeCell(e){
                 this.cell = e.target.value;
             },
-            onClickMine(e){
+            onChangeMine(e){
                 this.mine = e.target.value;
             },
             onClickBtn(){
