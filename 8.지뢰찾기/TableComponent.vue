@@ -16,7 +16,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { CODE, FLAG_CELL, NORMALIZE_CELL, OPEN_CELL, QUESTION_CELL } from './store';
+import { CLICK_MINE, CODE, FLAG_CELL, NORMALIZE_CELL, OPEN_CELL, QUESTION_CELL } from './store';
 
 export default {
     computed: {
@@ -65,7 +65,7 @@ export default {
                     case CODE.CLICKED_MINE:
                         return '펑!';               
                     default:
-                        return '';   
+                        return this.$store.state.tableData[row][cell] || '';   
                 }
             }
         },        
@@ -76,7 +76,14 @@ export default {
             if(this.halted){
                 return;
             }
-            this.$store.commit(OPEN_CELL, {row, cell});
+            switch(this.tableData[row][cell]){
+                case CODE.NORMAL:
+                    return this.$store.commit(OPEN_CELL, {row, cell});
+                case CODE.MINE:
+                    return this.$store.commit(CLICK_MINE, {row, cell});
+                default:
+                    return;
+            }         
         },
         onRightClickTd(row, cell){
             // 게임 종료시 클릭 안되게
