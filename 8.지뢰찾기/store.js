@@ -81,7 +81,22 @@ export default new Vuex.Store({
             state.halted = false;
         },
         [OPEN_CELL](state, {row, cell}) {
-            function checkAround() { // 주변 8칸 지뢰인지 검사
+            const checked = [];
+            function checkAround(row, cell) { // 주변 8칸 지뢰인지 검사
+                // undefined 안뜨게
+                const checkRowOrCellIsUndefined = row < 0 || row >= state.tableData.length || cell < 0 || cell >= state.tableData[0].length;
+                if(checkRowOrCellIsUndefined){
+                    return;
+                }
+                // 이미 열려있거나, 깃발, 물음표 있을시 넘어감
+                if([CODE.OPEND, CODE.FLAG, CODE.FLAG_MINE, CODE.QUESTION_MINE, CODE.QUESTION].includes(state.tableData[row][cell])){
+                    return;
+                }
+                if( checked.includes(row + '/' + cell)){ // 한번 연 칸이면 무시
+                    return;
+                }else{ // 아니면 체크드에 추가
+                    checked.push(row + '/' + cell); 
+                }
                 let around = [];
                 if(state.tableData[row - 1]){
                     around = around.concat([
@@ -98,12 +113,30 @@ export default new Vuex.Store({
                 }                
                 const counted = around.filter(function(v){
                     return [CODE.MINE, CODE.FLAG_MINE, CODE.QUESTION_MINE].includes(v);
-                });                
-                return counted.length;                
-            }            
-            const count = checkAround();
-            //console.log(count);
-            Vue.set(state.tableData[row], cell, count);
+                });             
+                if(counted.length === 0 && row > -1) { // 주변에 지뢰가 하나도 없으면
+                    const near = [];
+                    if(row - 1 > -1){
+                        near.push([row - 1, cell - 1]);
+                        near.push([row - 1, cell]);
+                        near.push([row - 1, cell + 1]);
+                    }
+                    near.push([row, cell - 1]);
+                    near.push([row, cell + 1]);
+                    if(row + 1 < state.tableData.length){
+                        near.push([row + 1, cell - 1]);
+                        near.push([row + 1, cell]);
+                        near.push([row + 1, cell + 1]);
+                    }
+                    near.forEach((n) => {
+                        if(state.tableData[n[0]][n[1]] !== CODE.OPENED){
+                            checkAround(n[0], n[1]);
+                        }
+                    });                    
+                }
+                Vue.set(state.tableData[row], cell, counted.length);
+            }              
+            checkAround(row, cell);           
         },
         [CLICK_MINE](state, {row, cell}) {
             state.halted = true;
