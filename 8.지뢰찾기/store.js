@@ -64,6 +64,7 @@ export default new Vuex.Store({
         timer: 0,
         result: '',
         halted: true, // 중단됨
+        opendCount: 0,
     },
     getters: {
 
@@ -79,8 +80,12 @@ export default new Vuex.Store({
             state.tableData = plantMine(row, cell, mine)       ;
             state.timer = 0;
             state.halted = false;
+            state.opendCount = 0;
+            state.result = '';
         },
         [OPEN_CELL](state, {row, cell}) {
+            // 승리조건을 위한 openCount
+            let opendCount = 0;
             const checked = [];
             function checkAround(row, cell) { // 주변 8칸 지뢰인지 검사
                 // undefined 안뜨게
@@ -134,9 +139,22 @@ export default new Vuex.Store({
                         }
                     });                    
                 }
+                if(state.tableData[row][cell] === CODE.NORMAL){
+                    opendCount += 1;
+                }
                 Vue.set(state.tableData[row], cell, counted.length);
             }              
             checkAround(row, cell);           
+            let halted = false;
+            let result = '';
+            // 가로 * 세로 - 지뢰수 === state에 쌓인 오픈카운트 갯수 + 지금 추가된 오픈카운트 이면 승리
+            if(state.data.row * state.data.cell - state.data.mine === state.opendCount + opendCount){
+                halted = true;
+                result = `${state.timer} 초만에 승리하셨습니다.`;
+            }
+            state.opendCount += opendCount;
+            state.halted = halted;
+            state.result = result;
         },
         [CLICK_MINE](state, {row, cell}) {
             state.halted = true;

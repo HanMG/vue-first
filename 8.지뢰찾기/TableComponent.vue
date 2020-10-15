@@ -52,8 +52,7 @@ export default {
         cellDataText() {
             return (row, cell) =>{
                 switch(this.$store.state.tableData[row][cell]){
-                    case CODE.MINE:
-                        return 'X';
+                    case CODE.MINE:                        
                     case CODE.NORMAL:
                         return '';
                     case CODE.FLAG_MINE:
