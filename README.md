@@ -244,3 +244,20 @@ store에서 state꺼낼때 더 편하게 해주기위해 사용
 # slot
 react에서의 children과 같다함. 제어의 역전(IOC: inversion of control). 
 자식컴포넌트에서 화면에 표시되어야할 내용을 부모컴포넌트에 적어줌으로 부모컴포넌트의 Data나 methods에 접근할 수 있게해줌
+
+# vue-router
+npm i vue-router
+페이지 변경이 아닌 컴포넌트와 주소만 바꿔서 보여줌. 눈속임
+기본적으로 해시라우터 (ex: router.html#/number-baseball)인데 검색엔진문제때문에 자주 안쓰인다고함
+
+0. routes.js 파일에 vue와 vue-router를 import 후 Vue.use(vue-router)로 사용
+1. 속성 routes에 보여질 path와 가져올 컴포넌트 명을 적어주고 import로 컴포넌트들을 가져옴
+2. 사용할 vue파일에서 import로 해당 파일을 가져온 후 사용
+3. router-link 태그와 router-view 태그를 사용해 보여지게함
+
+# 히스토리 라우터 사용
+
+mode: 'history', 추가하면 히스토리 라우터가 된다함
+이렇게 변경하면 해시라우터의 긴 주소가 아닌 router-link to에 입력한 것만 주소창에 보임
+그런데 새로고침시 해당 주소에 접근 불가로 GET에러가 뜸
+해결하기 위해서는 서버에도 알려줘야 함
