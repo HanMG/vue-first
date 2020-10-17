@@ -11,10 +11,10 @@ Vue.use(VueRouter);
 export default new VueRouter({
     mode: 'history',
     routes: [
-        // { path: '/number-baseball', component: NumberBaseball },
-        // { path: '/response-check', component: ResponseCheck },
-        // { path: '/rock-scissors-paper', component: RockScissorsPaper },
-        // { path: '/lotto-generator', component: LottoGenerator },
+        { path: '/number-baseball', component: NumberBaseball },
+        { path: '/response-check', component: ResponseCheck },
+        { path: '/rock-scissors-paper', component: RockScissorsPaper },
+        { path: '/lotto-generator', component: LottoGenerator },
         { path: '/game/:name', component: GameMatcher},
     ],
 });
